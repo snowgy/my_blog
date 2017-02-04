@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load custom_markdown %}
+{% load static %}
+{% block content %}
+<div class="posts">
+    {% for tag in tags %}
+        <section class="post">
+            <header class="post-header">
+
+                    <p class="post-meta">
+                        <a class="post-category post-category-js" href="{% url 'tag_search' tag %}">{{tag}}</a>
+                    </p>
+            </header>
+
+        </section>
+    {% endfor %}
+
+    {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
+      <div>
+      <ul class="pager">
+      {% if post_list.has_previous %}
+        <li><a href="?page={{ post_list.previous_page_number }}">上一页</a></li>
+      {% endif %}
+
+      {% if post_list.has_next %}
+        <li><a href="?page={{ post_list.next_page_number }}">下一页</a></li>
+      {% endif %}
+      </ul>
+      </div>
+    {% endif %}
+</div><!-- /.blog-post -->
+{% endblock %}

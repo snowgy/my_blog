@@ -5,7 +5,7 @@ from article.models import Article
 from datetime import datetime
 from django.http import Http404
 from django.contrib.syndication.views import Feed
-from django.core.paginator import  Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
 
 
@@ -78,7 +78,6 @@ class RssFeed(Feed):
     link = "feeds/posts/"
     description = "RSS feed - blog posts"
 
-
     def items(self):
         return Article.objects.order_by('-date_time')
 
@@ -88,3 +87,11 @@ class RssFeed(Feed):
     def item_description(self, item):
         return item.content
 
+
+def topic(request):
+    tags = set()
+    posts = Article.objects.all()
+    for post in posts:
+        tags.add(post.category)
+
+    return render(request, 'topic.html', {'tags': tags})

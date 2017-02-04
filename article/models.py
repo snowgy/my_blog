@@ -12,7 +12,7 @@ class Article(models.Model):
     category = models.CharField(max_length=50, blank=True)  # 博客标签
     date_time = models.DateTimeField(auto_now_add=True)  # 博客日期
     content = models.TextField(blank=True, null=True)  # 博客文章正文
-    img = models.ImageField(upload_to='static', null=True, blank=True)   # 文章标题图
+    img = models.ImageField(upload_to='static/images', null=True, blank=True)   # 文章标题图
 
 
     def get_absolute_url(self):
