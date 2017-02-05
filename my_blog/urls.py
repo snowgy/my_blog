@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from article import views 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^$', views.home, name='home'),
     url(r'^(?P<article_id>\d+)/$', views.detail, name='detail'),
     url(r'^archives/$', views.archives, name='archives'),
@@ -25,5 +25,8 @@ urlpatterns = [
     url(r'^tag/(?P<tag>\w+)/$', views.search_tag, name='tag_search'),
     url(r'^search/$', views.blog_search, name='search'),
     url(r'^feed/$', views.RssFeed(), name='RSS'),
-    url(r'^topic/$', views.topic, name='topic')
+    url(r'^topic/$', views.topic, name='topic'),
+    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)$', views.time_month, name='month'),
+    url(r'^archive/(?P<year>\d+)/$', views.time_year, name='year'),
+
 ]

@@ -2,23 +2,19 @@
 {% load custom_markdown %}
 {% load static %}
 {% block content %}
-<p>归档</p>
-<!-- 归档 -->
-<!--
-regroup 对 dates 按照 year(年份) 分组，把相同年份的月分到一个组
--->
+
 {% regroup dates by year as dates_by_year %}
-<ul>
+<ul class="pure-menu-list">
     {% for month in dates_by_year %}
     <!-- month 是一组月份列表 -->
-        <li>
-            {{ month.grouper }} 年
+        <li class="pure-menu-item">
+             <a  href="{% url 'year' month.grouper %}">{{ month.grouper }} 年</a>
             <!-- grouper 是组头，即某个月份列表的年份 -->
-            <ul>
+            <ul class="pure-menu-list">
                 {% for d in month.list %}
                 <!-- 再循环显示该年份组下的月份列表即可 -->
-                    <li>
-                        {{ d |date:'m' }} 月
+                    <li class="pure-menu-item">
+                        <a  href="{% url 'month' month.grouper  d|date:'m' %}">{{ d |date:'m' }} 月</a>
                     </li>
                 {% endfor %}
             </ul>

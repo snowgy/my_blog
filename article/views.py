@@ -38,6 +38,16 @@ def archives(request):
     return render(request, 'archives.html', {'dates': dates})
 
 
+def time_year(request, year):
+    post_list = Article.objects.filter(date_time__year=year)
+    return render(request, 'archieve.html', {'post_list': post_list})
+
+
+def time_month(request, year, month):
+    post_list = Article.objects.filter(date_time__year=year, date_time__month=month)
+    return render(request, 'archieve.html', {'post_list': post_list})
+
+
 def about_me(request):
     return render(request, 'about_me.html')
 
