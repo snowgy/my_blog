@@ -34,11 +34,8 @@ def detail(request, article_id):
 
 
 def archives(request):
-    try:
-        post_list = Article.objects.all()
-    except Article.DoesNotExist:
-        raise Http404
-    return render(request, 'archives.html', {'post_list': post_list, 'error': False})
+    dates = Article.objects.datetimes('date_time', 'month', order='DESC')
+    return render(request, 'archives.html', {'dates': dates})
 
 
 def about_me(request):
