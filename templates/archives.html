@@ -4,21 +4,22 @@
 {% block content %}
 
 {% regroup dates by year as dates_by_year %}
-<ul class="pure-menu-list">
+<div class="pure-u-1-4">
     {% for month in dates_by_year %}
     <!-- month 是一组月份列表 -->
-        <li class="pure-menu-item">
-             <a  href="{% url 'year' month.grouper %}">{{ month.grouper }} 年</a>
+
+        <div class="list-group">
+             <a  class="list-group-item active" href="{% url 'year' month.grouper %}">{{ month.grouper }} 年</a>
             <!-- grouper 是组头，即某个月份列表的年份 -->
-            <ul class="pure-menu-list">
+
+
                 {% for d in month.list %}
                 <!-- 再循环显示该年份组下的月份列表即可 -->
-                    <li class="pure-menu-item">
-                        <a  href="{% url 'month' month.grouper  d|date:'m' %}">{{ d |date:'m' }} 月</a>
-                    </li>
+                        <a class="list-group-item" href="{% url 'month' month.grouper  d|date:'m' %}">{{ d |date:'m' }} 月</a>
                 {% endfor %}
-            </ul>
-        </li>
+        </div>
+
     {% endfor %}
-</ul>
+</div>
+
 {% endblock %}

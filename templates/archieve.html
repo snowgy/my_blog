@@ -14,10 +14,10 @@
                     </p>
             </header>
 
-                <a class="pure-button" href="{% url 'detail' post.id %}"Read More>>></a>
+                <a class="pure-button" href="{% url 'detail' post.id %}">Read More>>></a>
         </section>
     {% endfor %}
-
+</div>
     {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
       <div>
       <ul class="pager">
@@ -31,5 +31,6 @@
       </ul>
       </div>
     {% endif %}
-</div><!-- /.blog-post -->
+
+<!-- /.blog-post -->
 {% endblock %}

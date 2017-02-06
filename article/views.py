@@ -40,11 +40,27 @@ def archives(request):
 
 def time_year(request, year):
     post_list = Article.objects.filter(date_time__year=year)
+    paginator = Paginator(post_list, 4)
+    page = request.GET.get('page')
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.paginator(paginator.num_pages)
     return render(request, 'archieve.html', {'post_list': post_list})
 
 
 def time_month(request, year, month):
     post_list = Article.objects.filter(date_time__year=year, date_time__month=month)
+    paginator = Paginator(post_list, 4)
+    page = request.GET.get('page')
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.paginator(paginator.num_pages)
     return render(request, 'archieve.html', {'post_list': post_list})
 
 
