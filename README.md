@@ -1,7 +1,7 @@
 # my_blog
 此个人博客使用django1.10.4和python3.5搭建，前端使用了pure，bootstrap框架。博客实现了评论，站内搜索，归档（按日期），标签分类等功能。博客的后台直接使用了django自带的admin。博客前期根据andrewliu的教程搭建https://github.com/Andrew-liu/my_blog_tutorial  后期自己做了一些修改，实现了一些新的功能。
 ##Install
-```python
+```
 $ git clone https://github.com/snowgy/my_blog
 ```
 ##Usage
