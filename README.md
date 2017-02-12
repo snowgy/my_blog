@@ -14,6 +14,7 @@ $ python manage.py runserver
 ```
 ##Shortcomings
 1. views.py没有写成类，导致有重复代码段的出现
+
 ##To Improve
 1. 标签后面需要统计出文章的数量
 2. 增加统计博文浏览量功能
