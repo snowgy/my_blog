@@ -84,10 +84,11 @@ def blog_search(request):
         else:
             post_list = Article.objects.filter(title__icontains=s)
             if len(post_list) == 0:
-                return render(request, 'archives.html', {'post_list': post_list,
+                return render(request, 'archieve.html', {'post_list': post_list,
                                                          'error': True})
             else:
-                return render(request, 'archives.html', {'post_list': post_list,
+
+                return render(request, 'archieve.html', {'post_list': post_list,
                                                          'error': False})
     return redirect('/')
 

@@ -3,6 +3,9 @@
 {% load static %}
 {% block content %}
 <div class="posts">
+    {% if error %}
+        <h2 class="post-title">Can't Find the Article</h2>
+    {% else %}
     {% for post in post_list %}
         <section class="post">
             <header class="post-header">
@@ -13,10 +16,10 @@
                         <a class="post-category post-category-js" href="{% url 'tag_search' tag=post.category %}">{{ post.category}}</a>
                     </p>
             </header>
-
-                <a class="pure-button" href="{% url 'detail' post.id %}">Read More>>></a>
+                <a class="pure-button" href="{% url 'detail' post.id %}">Read More></a>
         </section>
     {% endfor %}
+    {% endif %}
 </div>
     {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
       <div>
